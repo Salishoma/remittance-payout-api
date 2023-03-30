@@ -1,0 +1,9 @@
+seerbit:
+  baseUrl: https://staging.seerbitapigateway.com/fcmb/api/v1
+  grantType: client_credentials
+  clientId: ${SEERBIT_CLIENT_ID}
+  clientSecret: ${SEERBIT_SECRET}
+
+server:
+  servlet:
+    context-path: /seerbit/api/v1
