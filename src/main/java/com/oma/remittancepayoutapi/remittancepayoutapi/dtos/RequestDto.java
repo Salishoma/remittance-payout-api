@@ -9,6 +9,7 @@ import lombok.*;
 @Setter
 @Builder
 @JsonIgnoreProperties(ignoreUnknown = true)
+@ToString
 public class RequestDto {
     private String publickey;
     private Transaction transaction;

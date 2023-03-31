@@ -36,9 +36,8 @@ public class PayoutController {
     }
 
     @GetMapping(value = "status")
-    public ResponseEntity<StatusResponse> status (@RequestParam("reference") String reference) {
-
-        return payoutService.status(reference);
+    public StatusResponse status(@RequestParam("reference") String reference) {
+        return payoutService.status(reference).getBody();
     }
 
     @PostMapping("cancel")

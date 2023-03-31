@@ -29,7 +29,7 @@ public class PayoutServiceImpl implements PayoutService {
     @Override
     public ResponseEntity<Response> payout(RequestDto body) {
         URI uri = getURI("/account/payout");
-        return getResponseResponseEntity(body, uri);
+        return getResponseResponseEntity(body, uri, "successful");
     }
 
     @Override
@@ -51,8 +51,27 @@ public class PayoutServiceImpl implements PayoutService {
         return exchange;
     }
 
+    @Override
+    public ResponseEntity<Response> cancel(RequestDto body) {
+        URI uri = getURI("/payout/cancel");
+        return getResponseResponseEntity(body, uri, "cancelled");
+    }
 
-    private ResponseEntity<Response> getResponseResponseEntity(RequestDto body, URI uri) {
+    @Override
+    public ResponseEntity<Response> update(RequestDto body) {
+        URI uri = getURI("/payout/update");
+
+        return getResponseResponseEntity(body, uri, "successful");
+    }
+
+    @Override
+    public ResponseEntity<Response> create(RequestDto body) {
+        URI uri = getURI("/payout/create");
+
+        return getResponseResponseEntity(body, uri, "successful");
+    }
+
+    private ResponseEntity<Response> getResponseResponseEntity(RequestDto body, URI uri, String message) {
         HttpHeaders httpHeaders = getHeaders();
         HttpEntity<RequestDto> httpEntity = new HttpEntity<>(body, httpHeaders);
 
@@ -61,7 +80,7 @@ public class PayoutServiceImpl implements PayoutService {
             throw new ApiResourceNotFoundException("Resource not found");
         }
 
-        if (!"successful".equalsIgnoreCase(exchange.getBody().getMessage())) {
+        if (!message.equalsIgnoreCase(exchange.getBody().getMessage())) {
             throw new ApiBadRequestException(exchange.getBody().getMessage());
         }
         return exchange;
@@ -84,26 +103,6 @@ public class PayoutServiceImpl implements PayoutService {
             throw new RuntimeException(exception);
         }
         return uri;
-    }
-
-    @Override
-    public ResponseEntity<Response> cancel(RequestDto body) {
-        URI uri = getURI("/payout/cancel");
-        return getResponseResponseEntity(body, uri);
-    }
-
-    @Override
-    public ResponseEntity<Response> update(RequestDto body) {
-        URI uri = getURI("/payout/update");
-
-        return getResponseResponseEntity(body, uri);
-    }
-
-    @Override
-    public ResponseEntity<Response> create(RequestDto body) {
-        URI uri = getURI("/payout/create");
-
-        return getResponseResponseEntity(body, uri);
     }
 
 }

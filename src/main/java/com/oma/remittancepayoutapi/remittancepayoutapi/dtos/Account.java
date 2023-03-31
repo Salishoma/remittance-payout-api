@@ -1,21 +1,17 @@
 package com.oma.remittancepayoutapi.remittancepayoutapi.dtos;
 
-import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.Builder;
+import lombok.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @Builder
+@ToString
 public class Account {
-    @NotBlank(message = "Name cannot be empty!")
+//    @NotBlank(message = "Name cannot be empty!")
     private String name;
-    @NotBlank(message = "Address cannot be empty!")
+//    @NotBlank(message = "Address cannot be empty!")
     private String address;
     private String mobile;
     private String country;

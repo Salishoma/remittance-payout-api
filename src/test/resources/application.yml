@@ -1,8 +1,8 @@
 seerbit:
   baseUrl: https://staging.seerbitapigateway.com/fcmb/api/v1
   grantType: client_credentials
-  clientId: lpk_xxhyx6ta5JwJNgAw2MYzvhd7D
-  clientSecret: spk_BdE5ovCPtVFoLQKL5Bnsotr2P
+  clientId: ${CLIENT_ID}
+  clientSecret: ${CLIENT_SECRET}
 
 server:
   servlet:

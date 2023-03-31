@@ -27,12 +27,12 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public ResponseEntity<CustomerValidateResponse> validateCustomer(CustomerValidateRequest customerValidateRequest) {
 
-        URI uri = getURI("/customer/validate");
+        URI uri = getURI();
         HttpHeaders httpHeaders = getHeaders();
         HttpEntity<CustomerValidateRequest> httpEntity = new HttpEntity<>(customerValidateRequest, httpHeaders);
         ResponseEntity<CustomerValidateResponse> exchange = restTemplate.exchange(uri, HttpMethod.POST, httpEntity, CustomerValidateResponse.class);
 
-        if (exchange.getBody() == null ) {
+        if (exchange.getBody() == null) {
             throw new ApiResourceNotFoundException("Resource not found");
         }
 
@@ -51,10 +51,10 @@ public class CustomerServiceImpl implements CustomerService {
         return httpHeaders;
 
     }
-    private URI getURI(String url) {
+    private URI getURI() {
         URI uri;
         try {
-            uri = new URI(BASE_URL.concat(url));
+            uri = new URI(BASE_URL.concat("/customer/validate"));
         } catch (URISyntaxException exception) {
             throw new RuntimeException(exception);
         }

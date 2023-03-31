@@ -28,7 +28,6 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(value = {ApiResourceNotFoundException.class})
     public ResponseEntity<ApiException> handleApiResourceNotFoundException(ApiResourceNotFoundException e) {
         HttpStatus notFound = HttpStatus.NOT_FOUND;
-        System.out.println("=======>checking advice: code is " + notFound);
 
         ApiException apiException = new ApiException(e.getMessage(),
                 false, HttpStatus.NOT_FOUND);
@@ -40,7 +39,6 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(value = {UnauthorizedException.class})
     public ResponseEntity<ApiException> handleUnauthorizedException(UnauthorizedException e) {
         HttpStatus unauthorized = HttpStatus.UNAUTHORIZED;
-        System.out.println("=======>Testing");
 
         ApiException apiException = new ApiException(e.getMessage(),
                 false, unauthorized);
