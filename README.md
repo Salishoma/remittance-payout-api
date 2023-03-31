@@ -13,6 +13,16 @@ To run using Docker command, on your terminal:
 5. Run the command with 
 ###### docker run  -p 80:80 -e SEERBIT_CLIENT_ID=<your_client_id> -e SEERBIT_SECRET=<your_secret_key> payment-app
 
+### Docker Compose
+To run docker compose, on the command line:
+1. Remove target folder and generate jar file using mvn clean package
+2. Run the command:  docker-compose up -d
+3. To access the endpoints, go to 
+- http://localhost:8080/seerbit/api/v1/swagger-ui/index.html#/payout-controller/payout
+for swagger, and
+- http://localhost:8080/seerbit/api/v1/payout/create
+for instance to access the payout/create endpoint if you want to use postman.
+
 To access the application, on your browser or postman, type
 - http://localhost:8080/seerbit/api/v1/ <br>
 as the base url, and then append with the path of the resource you are trying to access.
